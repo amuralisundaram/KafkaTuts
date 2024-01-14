@@ -1,0 +1,35 @@
+STEP 2: START THE KAFKA ENVIRONMENT
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+Start the Kafka broker service
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+STEP 3: CREATE A TOPIC TO STORE YOUR EVENTS
+.\bin\windows\kafka-topics.bat --create --topic topic-001 --bootstrap-server localhost:9092
+
+
+STEP 4: WRITE SOME EVENTS INTO THE TOPIC
+.\bin\windows\kafka-console-producer.bat --topic topic-001 --bootstrap-server localhost:9092
+
+
+STEP 5:  READ THE EVENTS
+.\bin\windows\kafka-console-consumer.bat --topic topic-001 --from-beginning --bootstrap-server localhost:9092
+
+STEP 6: list topics
+C:\kafka>.\bin\windows\kafka-topics.bat --list --bootstrap-server=localhost:9092
+
+__consumer_offsets
+topic-001
+
+STEP 7: topic details
+C:\kafka>.\bin\windows\kafka-topics.bat --bootstrap-server=localhost:9092 --describe --topic topic-001
+Topic: topic-001        TopicId: K6DGrsOJQNG7u04nTfiekQ PartitionCount: 1       ReplicationFactor: 1    Configs:
+        Topic: topic-001        Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+
+
+
+Tutorial 1: https://www.geeksforgeeks.org/spring-boot-kafka-consumer-example/
+Tutorial 2: https://www.geeksforgeeks.org/spring-boot-kafka-producer-example/?ref=lbp
+
+
